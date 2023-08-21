@@ -1,0 +1,29 @@
+{
+    "name": "administrator/htdocs",
+    "require": {
+        "administrator/init_php":"dev-main",
+        "haoquach/naturalcms":"dev-main",
+        "phpmailer/phpmailer": "^6.8",
+        "robthree/twofactorauth": "^2.0",
+        "vlucas/phpdotenv": "^5.5",
+        "monolog/monolog": "^3.3",
+        "hao/libphp":"dev-main"
+    },
+    "autoload": {
+        "files": [
+            "function.php"
+        ]
+    },
+    "config": {
+        "process-timeout":0
+    },
+    "repositories": [
+        {"type": "vcs", "url": "https://github.com/quachvanhao2020/__init__PHP.git"},
+        {"type": "vcs", "url": "https://github.com/quachvanhao2020/__lib__PHP.git"},
+        {"type": "vcs", "url": "https://github.com/quachvanhao2020/NaturalCms.git"}
+    ],
+    "scripts": {
+        "serve": "php -S 0.0.0.0:8080",
+        "test": "phpunit"
+    }
+}
