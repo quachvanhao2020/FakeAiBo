@@ -50,20 +50,6 @@ function login(){
 							<div class="password mb-3">
 								<label class="sr-only"><?= __("password") ?></label>
 								<input name="password" type="password" class="form-control" placeholder="<?= __("password") ?>" required="required">
-								<div class="extra mt-3 row justify-content-between">
-									<div class="col-6">
-										<div class="form-check">
-											<input class="form-check-input" type="checkbox" value="">
-											<label class="form-check-label" for="RememberPassword">
-											<?= __("remember") ?>
-											</label>
-										</div>
-									</div>
-									<div class="col-6" style="text-align: end;">
-										<a href="repassword.php" style="margin-right: 10px;"><span><?= __("lostpassword") ?></span> </a>
-										<a href="register.php"><span><?= __("register") ?></span> </a>
-									</div>
-								</div>
 							</div>
 							<div class="text-center">
 								<button type="submit" class="g-recaptcha btn app-btn-primary w-100 theme-btn mx-auto"><?= __("login") ?></button>

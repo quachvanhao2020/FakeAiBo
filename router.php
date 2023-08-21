@@ -1,5 +1,5 @@
 <?php
-define("CLIENT_BASE",isset($_ENV['CLIENT_BASE']) ? $_ENV['CLIENT_BASE'] : "/client/");
+define("CLIENT_BASE",isset($_ENV['CLIENT_BASE']) ? $_ENV['CLIENT_BASE'] : "/client");
 define("ADMIN_BASE",isset($_ENV['ADMIN_BASE']) ? $_ENV['ADMIN_BASE'] : "/admin/");
 define("STATIC_BASE",isset($_ENV['STATIC_BASE']) ? $_ENV['STATIC_BASE'] : "/static");
 define("CLIENT_LOGIN",CLIENT_BASE."/login.php");
