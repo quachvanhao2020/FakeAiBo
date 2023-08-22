@@ -1,9 +1,5 @@
 <?php
 require_once __DIR__."/init.php";
-if($_SERVER['REQUEST_METHOD'] == "GET"){
-    $data = @$_GET['data'];
-    $v = (bool)random_int(0, 1);
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -28,10 +24,10 @@ if($_SERVER['REQUEST_METHOD'] == "GET"){
             <div class="col-12">
                 <div class="app-card-settings shadow-sm p-4" style="color: white;">
                     <div class="app-card-body">
-                        <form method="GET" style="text-align: center;">
+                        <form onsubmit="myFunction(event)" method="GET" style="text-align: center;">
                             <div class="mb-3">
                                 <label class="form-label">Nhập chuỗi tín hiệu</label>
-                                <input style="background: none;color: white;" name="data" type="text" class="form-control">
+                                <input style="background: none;color: white;" id="data" type="text" class="form-control">
                             </div>
                             <span>*4 kết quả gần nhất</span>
                             <hr class="mb-4">
@@ -41,13 +37,11 @@ if($_SERVER['REQUEST_METHOD'] == "GET"){
                 </div>
             </div>
         </div>
-        <?php if(!empty($data)){?>
         <div class="row">
             <div class="col-12" style="text-align: center;padding: 12px;">
-                <button class="btn app-btn-<?= $v ? "primary" : "danger" ?>"><?= $v ? "Buy" : "Sell" ?></button>
+                <button id="rs" style="opacity: 0;" class="btn app-btn-danger">Buy</button>
             </div>
         </div>
-        <?php }?>
         <div class="row">
             <div class="col-12">
                 <img style="width: 100%;" src="./bot.png" >
@@ -57,5 +51,33 @@ if($_SERVER['REQUEST_METHOD'] == "GET"){
     <?php include __CMS1_INCLUDE__."footer-script.php" ?>
     <?php include __CMS1_INCLUDE__."error.php" ?>
     <?php include __CMS1_INCLUDE__."message.php" ?>
+    <script>
+        var rs = document.getElementById("rs");
+        var data = document.getElementById("data");
+        function myFunction(e) {
+            e.preventDefault();
+            var v = data.value;
+            for (let i = 0; i < v.length; i++) {
+                const e = v[i];
+                if(e == "s" || e == "b"){
+
+                }else{
+                    alert("Nhập s hoặc b!")
+                    return;
+                }
+            }
+            var rd = Math.random() < 0.5;
+            if(rd){
+                rs.style.opacity = 1;
+                rs.setAttribute("class","btn app-btn-primary");
+                rs.innerText = "Buy";
+            }else{
+                rs.style.opacity = 1;
+                rs.setAttribute("class","btn app-btn-danger");
+                rs.innerText = "Sell";
+            }
+            return false;
+        }
+    </script>
 </body>
 </html>

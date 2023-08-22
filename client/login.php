@@ -39,7 +39,7 @@ function login(){
 	    <div class="auth-main-col text-center p-5">
 		    <div class="d-flex flex-column align-content-end">
 			    <div class="app-auth-body mx-auto">	
-				    <div class="app-auth-branding mb-4"><a class="app-logo" href="/"><img class="logo-icon me-2" src="<?= @$setting['logo'] ?>" alt="logo"></a></div>
+				    <div class="app-auth-branding mb-4"><a class="app-logo" href="/"><img class="logo-icon me-2" src="./bot.png" alt="logo"></a></div>
 					<h2 class="auth-heading text-center mb-5"><?= __("login") ?></h2>
 			        <div class="auth-form-container text-start">
 						<form id="form" method="POST" class="auth-form login-form">         
