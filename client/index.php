@@ -1,65 +1,56 @@
 <?php
 require_once __DIR__."/init.php";
-$menu = "home";
+if($_SERVER['REQUEST_METHOD'] == "GET"){
+    $data = @$_GET['data'];
+    $v = (bool)random_int(0, 1);
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <?php require_once __CMS1_INCLUDE__."/head.php"; ?>
-<body class="app">
-    <header class="app-header fixed-top">
-        <div class="app-header-inner">
-            <div class="container-fluid py-2">
-                <div class="app-header-content">
-                    <div class="row justify-content-between align-items-center">
-                        <div class="col-auto">
-                            <a id="sidepanel-toggler" class="sidepanel-toggler d-inline-block d-xl-none" href="#">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" role="img">
-                                    <title>Menu</title>
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path>
-                                </svg>
-                            </a>
-                        </div>
-                        <div class="search-mobile-trigger d-sm-none col">
-                            <i class="search-mobile-trigger-icon fas fa-search"></i>
-                        </div>
-                        <div class="app-search-box col">
-                            <form class="app-search-form">
-                                <input type="text" placeholder="Tìm kiếm..." name="search" class="form-control search-input">
-                                <button type="submit" class="btn search-btn btn-primary" value="Tìm kiếm"><i class="fas fa-search"></i></button>
-                            </form>
-                        </div>
-                        <div class="app-utilities col-auto">
-                            <div class="app-utility-item">
-                                <a href="logout.php" title="Cấu hình">
-                                    <i class="fa-solid fa-gear"></i>
-                                </a>
+<body class="app" style="background: url(./bg.jpg);background-size: cover;">
+    <style>
+        .app-btn-danger {
+            background:red;
+            color:#fff;
+            border-color:red
+        }
+        .app-btn-danger:hover,
+        .app-btn-danger:active {
+            color:#fff;
+            background:#18ba70;
+            border-color:#18ba70
+        }
+    </style>
+    <div class="container-xl p-md-3 p-lg-4">
+        <h1 class="app-page-title" style="text-align: center;color:white;">Bot phân tích Master AI</h1>
+        <div class="row">
+            <div class="col-12">
+                <div class="app-card-settings shadow-sm p-4" style="color: white;">
+                    <div class="app-card-body">
+                        <form method="GET" style="text-align: center;">
+                            <div class="mb-3">
+                                <label class="form-label">Nhập chuỗi tín hiệu</label>
+                                <input style="background: none;color: white;" name="data" type="text" class="form-control">
                             </div>
-                        </div>
+                            <span>*4 kết quả gần nhất</span>
+                            <hr class="mb-4">
+                            <button type="submit" class="btn app-btn-primary">Phân tích kết quả</button>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
-    </header>
-    <div class="container-xl pt-3 p-md-3 p-lg-4">
-        <h1 class="app-page-title">Nhập tín hiệu tìm kết quả</h1>
-        <hr class="mb-4">
-        <div class="row g-4 settings-section">
+        <?php if(!empty($data)){?>
+        <div class="row">
+            <div class="col-12" style="text-align: center;padding: 12px;">
+                <button class="btn app-btn-<?= $v ? "primary" : "danger" ?>"><?= $v ? "Buy" : "Sell" ?></button>
+            </div>
+        </div>
+        <?php }?>
+        <div class="row">
             <div class="col-12">
-                <div class="app-card app-card-settings shadow-sm p-4">
-                    <div class="app-card-body">
-                        <form method="POST">
-                            <div class="mb-3">
-                                <label class="form-label">Nhập chuội tín hiệu</label>
-                                <input name="name" type="text" class="form-control" value="">
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">Kết quả</label>
-                                <input name="email" type="text" class="form-control" value="">
-                            </div>
-                            <button type="submit" class="btn app-btn-primary">Tính toán</button>
-                        </form>
-                    </div>
-                </div>
+                <img style="width: 100%;" src="./bot.png" >
             </div>
         </div>
     </div>
