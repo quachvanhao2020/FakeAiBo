@@ -29,9 +29,8 @@ require_once __DIR__."/init.php";
                                 <label class="form-label">Nhập chuỗi tín hiệu</label>
                                 <input style="background: none;color: white;" id="data" type="text" class="form-control">
                             </div>
-                            <span>*4 kết quả gần nhất</span>
                             <hr class="mb-4">
-                            <button type="submit" class="btn app-btn-primary">Phân tích kết quả</button>
+                            <button data-bs-togglee="modal" data-bs-targete="#modal" type="submit" class="btn app-btn-primary">Phân tích kết quả</button>
                         </form>
                     </div>
                 </div>
@@ -47,6 +46,16 @@ require_once __DIR__."/init.php";
                 <img style="width: 100%;" src="./bot.png" >
             </div>
         </div>
+
+    </div>
+    <div class="modal" id="modal">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body">
+                    Đang phân tích..
+                </div>
+            </div>
+        </div>
     </div>
     <?php include __CMS1_INCLUDE__."footer-script.php" ?>
     <?php include __CMS1_INCLUDE__."error.php" ?>
@@ -54,6 +63,8 @@ require_once __DIR__."/init.php";
     <script>
         var rs = document.getElementById("rs");
         var data = document.getElementById("data");
+        var modal = document.getElementById("modal");
+        var m = new bootstrap.Modal(modal);
         function myFunction(e) {
             e.preventDefault();
             var v = data.value;
@@ -66,18 +77,25 @@ require_once __DIR__."/init.php";
                     return;
                 }
             }
-            var rd = Math.random() < 0.5;
-            if(rd){
-                rs.style.opacity = 1;
-                rs.setAttribute("class","btn app-btn-primary");
-                rs.innerText = "Buy";
-            }else{
-                rs.style.opacity = 1;
-                rs.setAttribute("class","btn app-btn-danger");
-                rs.innerText = "Sell";
-            }
+            rs.style.opacity = 1;
+            rs.setAttribute("class","btn app-btn-secondary");
+            rs.innerText = "Đang phân tích...";
+            setTimeout(()=>{
+                //m.hide();
+                var rd = Math.random() < 0.5;
+                if(rd){
+                    rs.style.opacity = 1;
+                    rs.setAttribute("class","btn app-btn-primary");
+                    rs.innerText = "Buy";
+                }else{
+                    rs.style.opacity = 1;
+                    rs.setAttribute("class","btn app-btn-danger");
+                    rs.innerText = "Sell";
+                }
+            },(Math.random() + 1) * 1000)
             return false;
         }
     </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </body>
 </html>
